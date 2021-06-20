@@ -6,6 +6,8 @@ const useDebounce = (value, delay) => {
   useEffect(() => {
     if (value.length > 0) {
       setIsSearching(true);
+    } else {
+      setIsSearching(false);
     }
     const timer = setTimeout(() => {
       setDebouncedValue(value);
