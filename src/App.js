@@ -1,11 +1,14 @@
 import React from 'react';
-import UserSearch from './Components/UserSearch';
+import SearchDebounceFunctional from './SearchDebounceFunctional';
+import SearchDebounceCustomHook from './SearchDebounceCustomHook';
 import './style.css';
 
 export default function App() {
   return (
     <div>
-      <UserSearch />
+      <SearchDebounceFunctional />
+      <hr />
+      <SearchDebounceCustomHook />
     </div>
   );
 }

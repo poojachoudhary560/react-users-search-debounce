@@ -38,7 +38,7 @@ const UserSearch = () => {
       {result.length > 0 &&
         result.map(item => {
           return (
-            <p>
+            <p key={item.email}>
               <span>{item.name}</span> -----
               <span>{item.email}</span>
             </p>
