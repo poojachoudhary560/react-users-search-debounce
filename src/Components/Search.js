@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 
-const Search = () => {
-  const [searchKey, setSearchKey] = useState('');
-  const [result, setResult] = useState([]);
-
-  const handleChange = () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json)
-      .then(res => setResult(res));
+const Search = ({ label, searchKey, handleInputChange }) => {
+  const handleChange = e => {
+    // console.log(e.target.value);
+    handleInputChange(e.target.value);
   };
   return (
     <>
-      <input type="text" val={searchKey} onchange={handleChange} />
-      {JSON.stringify(results)}
-      {result.map(item => {
-        <p>{}</p>;
-      })}
+      <label />
+      <input type="text" value={searchKey} onChange={handleChange} />
     </>
   );
 };
