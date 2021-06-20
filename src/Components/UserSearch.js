@@ -4,15 +4,27 @@ import Search from './Search';
 const UserSearch = () => {
   const [searchKey, setSearchKey] = useState('');
   const [result, setResult] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = e => {
     setSearchKey(e);
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(res => {
-        console.log(res[0]);
-        setResult(res);
-      });
+    if (e.length > 0) {
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then(res => {
+          console.log(res[0]);
+          setResult(res);
+          setLoading(false);
+        });
+    } else {
+      setResult([]);
+      setLoading(false);
+    }
+  };
+
+  const handleLoading = val => {
+    setLoading(val);
+    setResult([])
   };
   return (
     <>
@@ -20,15 +32,18 @@ const UserSearch = () => {
         label="User Search"
         searchKey={searchKey}
         handleInputChange={handleInputChange}
+        handleLoading={handleLoading}
       />
-      {result.map(item => {
-        return (
-          <p>
-            <span>{item.name}</span> -----
-            <span>{item.email}</span>
-          </p>
-        );
-      })}
+      {loading && <p>Loading.....</p>}
+      {result.length > 0 &&
+        result.map(item => {
+          return (
+            <p>
+              <span>{item.name}</span> -----
+              <span>{item.email}</span>
+            </p>
+          );
+        })}
     </>
   );
 };
