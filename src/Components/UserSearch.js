@@ -24,7 +24,7 @@ const UserSearch = () => {
 
   const handleLoading = val => {
     setLoading(val);
-    setResult([])
+    setResult([]);
   };
   return (
     <>

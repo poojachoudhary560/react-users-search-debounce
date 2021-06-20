@@ -5,15 +5,11 @@ const Search = ({ label, handleInputChange, handleLoading }) => {
   const handleChange = e => {
     console.log(e.target.value);
     setSearchKey(e.target.value);
-    /*  if (e?.target?.value?.length > 0) {
-      // setLoading(true);
+    if (e?.target?.value?.length > 0) {
+      handleLoading(true);
     } else {
-      //setLoading(false);
       handleLoading(false);
-    } */
-    handleLoading(true);
-
-    //handleInputChange(e.target.value);
+    }
   };
 
   useEffect(() => {
