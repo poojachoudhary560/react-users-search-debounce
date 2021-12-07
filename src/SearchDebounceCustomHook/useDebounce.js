@@ -13,6 +13,7 @@ const useDebounce = (value, delay) => {
       setDebouncedValue(value);
     }, delay);
 
+    console.log(timer);
     return () => {
       clearInterval(timer);
     };
